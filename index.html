@@ -110,6 +110,12 @@
   .proj p{font-size:14px;color:var(--muted);flex:1}
   .proj .tools-line{margin-top:14px;font-size:12.5px;color:var(--accent);font-weight:600;letter-spacing:.3px}
   .proj .repo-link{margin-top:6px;font-size:13.5px}
+  .proj img.proj-img{width:100%;border-radius:10px;border:1px solid var(--card-border);margin-bottom:14px;display:block}
+  .proj.wide{grid-column:1/-1}
+  .results-label{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent)}
+  .proj ul.results{list-style:none;margin-top:8px;padding:0}
+  .proj ul.results li{font-size:13px;color:var(--muted);padding-left:18px;position:relative;margin-bottom:6px}
+  .proj ul.results li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
 
   /* Certs */
   .cert-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
@@ -166,8 +172,8 @@
   <div class="hero">
     <div class="wrap hero-inner">
       <span class="kicker">Junior Data Analyst &nbsp;·&nbsp; BI &amp; Reporting</span>
-      <h1>Mohamed Abdo Mahmoud<br><span class="thin">I turn raw data into clear KPIs and dashboards people actually use.</span></h1>
-      <p class="sub">Data analyst based in Cairo, Egypt, currently at Nosoq Pharma. I work across the full path from messy source data to a decision-ready report: SQL and PostgreSQL pipelines, Python for exploration, and Power BI for the final story.</p>
+      <h1>Mohamed Abdo Mahmoud<br><span class="thin">I turn messy data into answers the business can use.</span></h1>
+      <p class="sub">I'm a data analyst in Cairo, currently at Nosoq Pharma. Most of my day is SQL, Python and Power BI: pulling data from wherever it lives, cleaning it up, and shipping dashboards and reports that people actually open.</p>
       <div class="cta-row">
         <a class="btn primary" href="#projects">View my projects</a>
         <a class="btn" href="https://github.com/MohamedAbdo65" target="_blank" rel="noopener">GitHub</a>
@@ -230,10 +236,10 @@
         </div>
         <div class="where">Giza, 6th of October, Egypt</div>
         <ul>
-          <li>Consolidate data from worksheets, CSV files, and database servers into clean, validated, analysis-ready datasets.</li>
-          <li>Built a Power BI dashboard with 8 KPIs and 4 interactive views covering sales trends, order volume, and product performance.</li>
-          <li>Analyze sales by product, store, time period, and order volume to surface revenue and demand patterns.</li>
-          <li>Developed KPI reports on attendance, working hours, and employee performance to track orders, revenue, and productivity.</li>
+          <li>Pull data together from sheets, CSV exports and database servers, and clean it until it's ready to analyze.</li>
+          <li>Built a Power BI dashboard with 8 KPIs and 4 interactive views for sales trends, order volume and product performance.</li>
+          <li>Break sales down by product, store and time period to see where revenue and demand really come from.</li>
+          <li>Put together KPI reports on attendance, working hours and productivity that the team tracks orders and revenue with.</li>
         </ul>
       </div>
     </div>
@@ -244,47 +250,88 @@
     <div class="wrap">
       <div class="sec-title">Projects</div>
       <h2>Selected work</h2>
-      <p class="muted" style="margin-bottom:22px;max-width:640px">End-to-end projects from my GitHub: pipelines, warehouses, SQL analysis, and dashboards. Each card links to the code.</p>
+      <p class="muted" style="margin-bottom:22px;max-width:640px">Real projects, with the actual output on the card: dashboards, models and code straight from the repos. Each one links to the source on GitHub.</p>
       <div class="proj-grid">
 
         <div class="proj">
+          <img class="proj-img" src="pipeline-eda.png" alt="Revenue and profit trend plus RFM customer segments from the sales pipeline project" loading="lazy">
           <h3>Sales Analytics Pipeline</h3>
-          <p>18K retail transactions (2022–2025) across 6 countries and 12 stores, analyzed end to end. Bronze-silver-gold pipeline in PostgreSQL with automated load procedures and a star schema. Advanced SQL for 8 business questions (RFM segmentation, cohort retention), EDA in Python, and a 3-page Power BI dashboard with DAX measures for YoY, margin %, and return rate.</p>
+          <p>18K retail transactions across 6 countries and 12 stores, taken from raw CSV files to answers. I built a bronze-silver-gold pipeline in PostgreSQL with automated load procedures and a star schema, then used it to answer the questions a sales manager would actually ask.</p>
+          <div class="results-label">Key results</div>
+          <ul class="results">
+            <li>Revenue, profit and margin tracked month by month over 4 years</li>
+            <li>Customers segmented with RFM: Champions, Loyal, At Risk and more</li>
+            <li>Return rate broken down by product category and return reason</li>
+            <li>8 business questions answered in SQL, with EDA charts in Python</li>
+          </ul>
           <div class="tools-line">PostgreSQL · Python · Power BI · DAX</div>
           <a class="repo-link" href="https://github.com/MohamedAbdo65/Sales-Analytics-Pipeline" target="_blank" rel="noopener">View on GitHub →</a>
         </div>
 
         <div class="proj">
+          <img class="proj-img" src="warehouse-architecture.png" alt="Medallion architecture diagram of the ERP and CRM data warehouse" loading="lazy">
           <h3>Data Warehouse — ERP &amp; CRM</h3>
-          <p>A modern data warehouse consolidating sales data from two source systems (ERP and CRM, 6 CSV files) into bronze, silver, and gold layers. SQL scripts to load raw data, cleaning and standardization to fix data quality issues, and business-ready gold views (customer and product dimensions, sales fact) with a documented data model.</p>
+          <p>Sales data was sitting in two separate systems, ERP and CRM, as 6 CSV files. I designed a PostgreSQL warehouse that loads them raw into bronze, cleans and standardizes everything in silver, and serves a business-ready star schema in gold.</p>
+          <div class="results-label">Key results</div>
+          <ul class="results">
+            <li>Bronze, silver and gold layers with documented load scripts</li>
+            <li>Data quality checks before anything reaches the gold layer</li>
+            <li>Gold star schema: customer and product dimensions around a sales fact</li>
+          </ul>
           <div class="tools-line">PostgreSQL · SQL · Medallion Architecture</div>
           <a class="repo-link" href="https://github.com/MohamedAbdo65/Data_Warehouse_Project" target="_blank" rel="noopener">View on GitHub →</a>
         </div>
 
         <div class="proj">
+          <img class="proj-img" src="hr-attrition-model.png" alt="Star schema model behind the HR attrition dashboard in Power BI" loading="lazy">
           <h3>HR Attrition Dashboard</h3>
-          <p>A real-world HR dataset of 1,470 employees, from raw data to a final dashboard. Star-schema model with DAX measures for attrition rate, income gaps, and satisfaction indices. IQR outlier detection and a composite Risk Score built from six attrition drivers, delivered with retention recommendations for HR stakeholders.</p>
+          <p>HR data for 1,470 employees, modeled as a star schema in Power BI. Instead of only showing who already left, I built a composite Risk Score from six attrition drivers, so HR can see who might leave next and act early.</p>
+          <div class="results-label">Key results</div>
+          <ul class="results">
+            <li>Attrition rate, income gaps and satisfaction indices as DAX measures</li>
+            <li>IQR outlier detection to keep the numbers honest</li>
+            <li>Risk scoring that turns the dashboard into a retention to-do list</li>
+          </ul>
           <div class="tools-line">Power BI · Power Query · DAX · SQL</div>
           <a class="repo-link" href="https://github.com/MohamedAbdo65/Analysis-Projects-Using-Power-BI" target="_blank" rel="noopener">View on GitHub →</a>
         </div>
 
         <div class="proj">
+          <img class="proj-img" src="sql-analysis-code.png" alt="SQL from the customer and product analysis project" loading="lazy">
           <h3>Customer &amp; Product SQL Analysis</h3>
-          <p>Exploratory and advanced SQL analysis on customer and product data, with reusable report queries that consolidate key metrics for business reporting.</p>
+          <p>A set of SQL analyses on customer and product data: exploratory work first, then reusable report queries that roll the numbers up the way the business asks for them.</p>
+          <div class="results-label">Key results</div>
+          <ul class="results">
+            <li>Yearly and monthly sales trends with running totals</li>
+            <li>Customer and product report queries, ready to refresh</li>
+          </ul>
           <div class="tools-line">SQL</div>
           <a class="repo-link" href="https://github.com/MohamedAbdo65/Data_Analysis_Projects_SQL" target="_blank" rel="noopener">View on GitHub →</a>
         </div>
 
-        <div class="proj">
+        <div class="proj wide">
+          <img class="proj-img" src="dashboard-powerbi.png" alt="Juice shop sales dashboard and Uber rides dashboard built in Power BI" loading="lazy">
           <h3>Juice Shop &amp; Uber Rides Dashboards</h3>
-          <p>Two analysis projects scoped from business requirements: cleaned raw datasets, designed data models and KPIs, and built multi-page interactive Power BI dashboards with custom visuals covering sales performance, trip volume, demand patterns, and time trends.</p>
+          <p>Two Power BI projects scoped from written business requirements: cleaned raw datasets, designed the data models and KPIs, and built multi-page interactive dashboards. One tracks a juice shop's daily sales against targets; the other follows Uber bookings, revenue and lost rides.</p>
+          <div class="results-label">Key results</div>
+          <ul class="results">
+            <li>Juice shop: 10K orders, 500 customers and 77.9K in sales, with clear 9 AM–12 PM and 4–6 PM peaks</li>
+            <li>Uber: 93K completed bookings and $51.85M revenue, but also 57K lost bookings with the reasons broken out</li>
+            <li>Auto is the top-earning vehicle type at $13M, ahead of Bike at $11M</li>
+          </ul>
           <div class="tools-line">Power BI · Power Query · SQL · DAX · Figma</div>
           <a class="repo-link" href="https://github.com/MohamedAbdo65/Analysis-Projects-Using-Power-BI" target="_blank" rel="noopener">View on GitHub →</a>
         </div>
 
         <div class="proj">
           <h3>Excel Analysis Projects</h3>
-          <p>Ads marketing campaign reporting (impressions, clicks, conversions, spend, return KPIs) and coffee shop &amp; bike sales analysis, prepared with Power Query and PivotTables and delivered as comparison and trend dashboards with written findings.</p>
+          <p>Three Excel projects with the full workflow in Power Query and Power Pivot: an ads campaign performance dashboard, plus sales analysis for a coffee shop and a bike store, each delivered with written findings.</p>
+          <div class="results-label">Key results</div>
+          <ul class="results">
+            <li>Ads: $2.5M spend, 4.85M impressions and a 4.16% CTR across Google and Facebook</li>
+            <li>Coffee shop: $698.8K from 149K transactions, and revenue doubled from January to June with an 8–10 AM peak</li>
+            <li>Bike store: 48.1% overall purchase rate; middle-aged customers buy at 78%, the strongest segment by far</li>
+          </ul>
           <div class="tools-line">Excel · Power Query · PivotTables · DAX</div>
           <a class="repo-link" href="https://github.com/MohamedAbdo65/Analysis-Projects-Using-Excel" target="_blank" rel="noopener">View on GitHub →</a>
         </div>
@@ -368,4 +415,4 @@
 </footer>
 
 </body>
-  </html>
+</html>

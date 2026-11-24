@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Abdo — Junior Data Analyst</title>
+<meta name="description" content="Portfolio of Mohamed Abdo, Junior Data Analyst in Cairo. SQL, Python, Power BI, Excel. Projects, experience and certifications.">
+<style>
+  :root{
+    --bg:#0b1220;
+    --bg-soft:#111a2e;
+    --card:#141f36;
+    --card-border:#22304f;
+    --text:#e8eef8;
+    --muted:#9db0cc;
+    --accent:#2dd4bf;
+    --accent-soft:rgba(45,212,191,.12);
+    --link:#7dd3fc;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+
+  /* Nav */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,18,32,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--card-border);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-weight:700;letter-spacing:.3px;color:var(--text)}
+  .brand span{color:var(--accent)}
+  .navlinks{display:flex;gap:22px;font-size:14px}
+  .navlinks a{color:var(--muted)}
+  .navlinks a:hover{color:var(--text);text-decoration:none}
+  @media(max-width:640px){.navlinks{display:none}}
+
+  /* Hero */
+  .hero{padding:84px 0 64px;position:relative;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(560px 300px at 82% 8%, rgba(45,212,191,.14), transparent 60%),
+      radial-gradient(480px 260px at 8% 88%, rgba(125,211,252,.10), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative}
+  .kicker{
+    display:inline-block;font-size:13px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);
+    padding:6px 12px;border-radius:999px;margin-bottom:20px;
+  }
+  h1{font-size:clamp(34px,6vw,54px);line-height:1.12;letter-spacing:-.5px}
+  h1 .thin{color:var(--muted);font-weight:600}
+  .hero p.sub{margin-top:18px;max-width:640px;color:var(--muted);font-size:17px}
+  .cta-row{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 20px;border-radius:10px;font-weight:600;font-size:15px;
+    border:1px solid var(--card-border);color:var(--text);background:var(--card);
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .btn:hover{text-decoration:none;transform:translateY(-2px);border-color:var(--accent)}
+  .btn.primary{background:var(--accent);color:#06231f;border-color:var(--accent)}
+  .btn.primary:hover{filter:brightness(1.08)}
+
+  /* Sections */
+  section{padding:56px 0}
+  .sec-title{font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  h2{font-size:clamp(24px,4vw,32px);letter-spacing:-.3px;margin-bottom:22px}
+  .muted{color:var(--muted)}
+
+  /* Skills */
+  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .skill-group{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:20px}
+  .skill-group h3{font-size:15px;margin-bottom:12px;color:var(--text)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13px;color:var(--muted);background:var(--bg-soft);border:1px solid var(--card-border);padding:5px 11px;border-radius:999px}
+
+  /* Experience */
+  .job{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:24px}
+  .job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;align-items:baseline;margin-bottom:4px}
+  .job-head h3{font-size:18px}
+  .job-head .when{color:var(--accent);font-size:14px;font-weight:600}
+  .job .where{color:var(--muted);font-size:14px;margin-bottom:12px}
+  .job ul{padding-left:20px;color:var(--muted)}
+  .job li{margin-bottom:8px}
+  .job li::marker{color:var(--accent)}
+
+  /* Projects */
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+  .proj{
+    display:flex;flex-direction:column;
+    background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:22px;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .proj:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .proj h3{font-size:17px;margin-bottom:8px}
+  .proj p{font-size:14px;color:var(--muted);flex:1}
+  .proj .tools-line{margin-top:14px;font-size:12.5px;color:var(--accent);font-weight:600;letter-spacing:.3px}
+  .proj .repo-link{margin-top:6px;font-size:13.5px}
+
+  /* Certs */
+  .cert-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+  .cert{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:16px 18px;font-size:14.5px;display:flex;gap:12px;align-items:flex-start}
+  .cert svg{flex:none;margin-top:2px}
+  .cert .org{color:var(--muted);font-size:13px}
+
+  /* Education & languages */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:720px){.two-col{grid-template-columns:1fr}}
+  .panel{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:22px}
+  .panel h3{font-size:16px;margin-bottom:8px}
+
+  /* Contact */
+  .contact-grid{display:flex;flex-wrap:wrap;gap:12px}
+  .contact-card{
+    flex:1 1 200px;display:flex;align-items:center;gap:12px;
+    background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:16px 18px;
+    color:var(--text);font-size:14.5px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .contact-card:hover{border-color:var(--accent);transform:translateY(-2px);text-decoration:none}
+  .contact-card svg{flex:none}
+  .contact-card .label{display:block;font-size:12px;color:var(--muted)}
+
+  footer{border-top:1px solid var(--card-border);padding:28px 0 40px;color:var(--muted);font-size:13.5px;text-align:center}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top">Mohamed<span>.</span>Abdo</a>
+      <div class="navlinks">
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-inner">
+      <span class="kicker">Junior Data Analyst &nbsp;·&nbsp; BI &amp; Reporting</span>
+      <h1>Mohamed Abdo Mahmoud<br><span class="thin">I turn raw data into clear KPIs and dashboards people actually use.</span></h1>
+      <p class="sub">Data analyst based in Cairo, Egypt, currently at Nosoq Pharma. I work across the full path from messy source data to a decision-ready report: SQL and PostgreSQL pipelines, Python for exploration, and Power BI for the final story.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#projects">View my projects</a>
+        <a class="btn" href="https://github.com/MohamedAbdo65" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/mohamed-abdo-15b923157" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="mailto:mohamedabdomahmoud@outlook.com">Email me</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-title">Skills</div>
+      <h2>What I work with</h2>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>BI &amp; Visualization</h3>
+          <div class="chips">
+            <span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span>
+            <span class="chip">Excel</span><span class="chip">Power Pivot</span><span class="chip">PivotTables</span>
+            <span class="chip">Dashboard Design</span><span class="chip">Figma</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Programming</h3>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">NumPy</span>
+            <span class="chip">Matplotlib</span><span class="chip">Seaborn</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Databases &amp; Modeling</h3>
+          <div class="chips">
+            <span class="chip">SQL</span><span class="chip">PostgreSQL</span><span class="chip">CTEs</span>
+            <span class="chip">Window Functions</span><span class="chip">Star Schema</span>
+            <span class="chip">Data Warehouse</span><span class="chip">ETL</span><span class="chip">Database Design</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Analysis &amp; Tools</h3>
+          <div class="chips">
+            <span class="chip">Data Cleaning</span><span class="chip">EDA</span><span class="chip">Statistical Analysis</span>
+            <span class="chip">KPI Development</span><span class="chip">RFM &amp; Cohort Analysis</span>
+            <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Databricks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-title">Experience</div>
+      <h2>Where I work</h2>
+      <div class="job">
+        <div class="job-head">
+          <h3>Junior Data Analyst — Nosoq Pharma</h3>
+          <span class="when">Jun 2026 – Present</span>
+        </div>
+        <div class="where">Giza, 6th of October, Egypt</div>
+        <ul>
+          <li>Consolidate data from worksheets, CSV files, and database servers into clean, validated, analysis-ready datasets.</li>
+          <li>Built a Power BI dashboard with 8 KPIs and 4 interactive views covering sales trends, order volume, and product performance.</li>
+          <li>Analyze sales by product, store, time period, and order volume to surface revenue and demand patterns.</li>
+          <li>Developed KPI reports on attendance, working hours, and employee performance to track orders, revenue, and productivity.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-title">Projects</div>
+      <h2>Selected work</h2>
+      <p class="muted" style="margin-bottom:22px;max-width:640px">End-to-end projects from my GitHub: pipelines, warehouses, SQL analysis, and dashboards. Each card links to the code.</p>
+      <div class="proj-grid">
+
+        <div class="proj">
+          <h3>Sales Analytics Pipeline</h3>
+          <p>18K retail transactions (2022–2025) across 6 countries and 12 stores, analyzed end to end. Bronze-silver-gold pipeline in PostgreSQL with automated load procedures and a star schema. Advanced SQL for 8 business questions (RFM segmentation, cohort retention), EDA in Python, and a 3-page Power BI dashboard with DAX measures for YoY, margin %, and return rate.</p>
+          <div class="tools-line">PostgreSQL · Python · Power BI · DAX</div>
+          <a class="repo-link" href="https://github.com/MohamedAbdo65/Sales-Analytics-Pipeline" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj">
+          <h3>Data Warehouse — ERP &amp; CRM</h3>
+          <p>A modern data warehouse consolidating sales data from two source systems (ERP and CRM, 6 CSV files) into bronze, silver, and gold layers. SQL scripts to load raw data, cleaning and standardization to fix data quality issues, and business-ready gold views (customer and product dimensions, sales fact) with a documented data model.</p>
+          <div class="tools-line">PostgreSQL · SQL · Medallion Architecture</div>
+          <a class="repo-link" href="https://github.com/MohamedAbdo65/Data_Warehouse_Project" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj">
+          <h3>HR Attrition Dashboard</h3>
+          <p>A real-world HR dataset of 1,470 employees, from raw data to a final dashboard. Star-schema model with DAX measures for attrition rate, income gaps, and satisfaction indices. IQR outlier detection and a composite Risk Score built from six attrition drivers, delivered with retention recommendations for HR stakeholders.</p>
+          <div class="tools-line">Power BI · Power Query · DAX · SQL</div>
+          <a class="repo-link" href="https://github.com/MohamedAbdo65/Analysis-Projects-Using-Power-BI" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj">
+          <h3>Customer &amp; Product SQL Analysis</h3>
+          <p>Exploratory and advanced SQL analysis on customer and product data, with reusable report queries that consolidate key metrics for business reporting.</p>
+          <div class="tools-line">SQL</div>
+          <a class="repo-link" href="https://github.com/MohamedAbdo65/Data_Analysis_Projects_SQL" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj">
+          <h3>Juice Shop &amp; Uber Rides Dashboards</h3>
+          <p>Two analysis projects scoped from business requirements: cleaned raw datasets, designed data models and KPIs, and built multi-page interactive Power BI dashboards with custom visuals covering sales performance, trip volume, demand patterns, and time trends.</p>
+          <div class="tools-line">Power BI · Power Query · SQL · DAX · Figma</div>
+          <a class="repo-link" href="https://github.com/MohamedAbdo65/Analysis-Projects-Using-Power-BI" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj">
+          <h3>Excel Analysis Projects</h3>
+          <p>Ads marketing campaign reporting (impressions, clicks, conversions, spend, return KPIs) and coffee shop &amp; bike sales analysis, prepared with Power Query and PivotTables and delivered as comparison and trend dashboards with written findings.</p>
+          <div class="tools-line">Excel · Power Query · PivotTables · DAX</div>
+          <a class="repo-link" href="https://github.com/MohamedAbdo65/Analysis-Projects-Using-Excel" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+      </div>
+      <p class="muted" style="margin-top:18px;font-size:14px">More on my GitHub:
+        <a href="https://github.com/MohamedAbdo65/Analysis-Projects-Using-Python" target="_blank" rel="noopener">Python projects</a> ·
+        <a href="https://github.com/MohamedAbdo65/IBM-Capstone-Project" target="_blank" rel="noopener">IBM Capstone</a> ·
+        <a href="https://github.com/MohamedAbdo65?tab=repositories" target="_blank" rel="noopener">all repositories</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="wrap">
+      <div class="sec-title">Certifications</div>
+      <h2>Certificates</h2>
+      <div class="cert-list">
+        <div class="cert"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div>IBM Data Analyst Professional Certificate<div class="org">Coursera</div></div></div>
+        <div class="cert"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div>Microsoft Power BI Data Analyst Professional Certificate<div class="org">Coursera</div></div></div>
+        <div class="cert"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div>Google Data Analytics Professional Certificate<div class="org">Coursera</div></div></div>
+        <div class="cert"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div>Python for Data Science, AI &amp; Development<div class="org">Coursera</div></div></div>
+        <div class="cert"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div>Associate Data Analyst in SQL<div class="org">DataCamp</div></div></div>
+        <div class="cert"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div>Data Analyst in Databricks<div class="org">DataCamp</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="two-col">
+        <div class="panel">
+          <div class="sec-title">Education</div>
+          <h3>B.Sc., Information Systems</h3>
+          <p class="muted">Faculty of Computers and Information, Helwan University<br>June 2023 · Grade: Good</p>
+        </div>
+        <div class="panel">
+          <div class="sec-title">Languages</div>
+          <h3>Arabic &amp; English</h3>
+          <p class="muted">Arabic: Native<br>English: Intermediate (B1), actively working toward C1</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-title">Contact</div>
+      <h2>Let's talk</h2>
+      <p class="muted" style="margin-bottom:20px;max-width:620px">I'm open to Junior Data Analyst, BI Analyst, and Reporting Analyst roles in Egypt and the Gulf. The fastest way to reach me is email or LinkedIn.</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:mohamedabdomahmoud@outlook.com">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          <span><span class="label">Email</span>mohamedabdomahmoud@outlook.com</span>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/mohamed-abdo-15b923157" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span><span class="label">LinkedIn</span>mohamed-abdo-15b923157</span>
+        </a>
+        <a class="contact-card" href="https://github.com/MohamedAbdo65" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <span><span class="label">GitHub</span>MohamedAbdo65</span>
+        </a>
+        <a class="contact-card" href="tel:+201141077099">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span><span class="label">Phone · Cairo, Egypt</span>+20 114 107 7099</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Mohamed Abdo Mahmoud · Junior Data Analyst · Built with HTML &amp; CSS, hosted on GitHub Pages
+  </div>
+</footer>
+
+</body>
+  </html>
